@@ -1,17 +1,12 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ja">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport"
-      content="width=device-width,
-               initial-scale=1,
-               viewport-fit=cover,
-               user-scalable=no">
-
-<title>JUST EVADE</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
+<meta name="theme-color" content="#030711">
+<title>JUST EVADE — AREA 01</title>
 
 <style>
-
 *{
   box-sizing:border-box;
   -webkit-tap-highlight-color:transparent;
@@ -21,24 +16,17 @@ html,body{
   margin:0;
   width:100%;
   height:100%;
-  overflow:hidden;
-  background:#020711;
-  font-family:
-    -apple-system,
-    BlinkMacSystemFont,
-    "Helvetica Neue",
-    Arial,
-    sans-serif;
+  background:#02050d;
+  color:#e9fbff;
+  font-family:-apple-system,BlinkMacSystemFont,"Helvetica Neue",Arial,sans-serif;
 }
 
 body{
+  overflow:hidden;
   touch-action:manipulation;
-  color:#eaffff;
 }
 
 button{
-  border:0;
-  outline:0;
   font:inherit;
   color:inherit;
 }
@@ -50,930 +38,652 @@ button{
   max-width:540px;
   margin:auto;
   overflow:hidden;
+  background:#030711;
+}
 
+/* BACKGROUND */
+.bg{
+  position:absolute;
+  inset:0;
   background:
+    radial-gradient(
+      ellipse at 72% 17%,
+      rgba(61,193,255,.18) 0%,
+      rgba(61,193,255,.06) 18%,
+      transparent 38%
+    ),
     linear-gradient(
-      145deg,
-      #07182c 0%,
-      #030914 46%,
+      155deg,
+      #07172b 0%,
+      #030914 48%,
       #0b0619 100%
     );
 }
 
-
-/* =========================
-   BACKGROUND
-========================= */
-
-.grid-bg{
-  position:absolute;
-  inset:0;
-
-  background:
-    linear-gradient(
-      rgba(50,180,255,.055) 1px,
-      transparent 1px
-    ),
-    linear-gradient(
-      90deg,
-      rgba(50,180,255,.055) 1px,
-      transparent 1px
-    );
-
-  background-size:32px 32px;
-
-  opacity:.65;
-}
-
-.grid-bg::after{
+.bg:before{
   content:"";
   position:absolute;
   inset:0;
-
   background:
     linear-gradient(
-      125deg,
-      transparent 0%,
-      transparent 48%,
-      rgba(0,220,255,.08) 48.2%,
-      transparent 48.8%
+      112deg,
+      transparent 0 52%,
+      rgba(72,222,255,.07) 52.1%,
+      transparent 52.5%
     ),
     linear-gradient(
-      72deg,
-      transparent 0%,
-      transparent 62%,
-      rgba(255,0,200,.06) 62.2%,
-      transparent 63%
+      76deg,
+      transparent 0 64%,
+      rgba(255,55,220,.06) 64.1%,
+      transparent 64.5%
+    ),
+    repeating-linear-gradient(
+      90deg,
+      transparent 0 9.8%,
+      rgba(71,207,255,.055) 10%,
+      transparent 10.15%
     );
 }
 
+.scan{
+  position:absolute;
+  inset:0;
+  background:
+    repeating-linear-gradient(
+      0deg,
+      rgba(255,255,255,.015) 0 1px,
+      transparent 1px 5px
+    );
+  mix-blend-mode:screen;
+  pointer-events:none;
+}
 
-/* =========================
-   MOON
-========================= */
-
+/* MOON */
 .moon{
   position:absolute;
-
-  width:170px;
-  height:170px;
-
-  right:-25px;
-  top:82px;
-
+  right:6%;
+  top:7%;
+  width:min(29vw,150px);
+  aspect-ratio:1;
   border-radius:50%;
 
   background:
     radial-gradient(
-      circle at 32% 28%,
-      #e9fbff 0%,
-      #a5eaff 28%,
-      #56b8ed 55%,
-      #245795 78%,
-      #142e61 100%
+      circle at 34% 30%,
+      #e8fbff 0,
+      #9be7ff 30%,
+      #4a9de8 58%,
+      #1c3f80 100%
     );
 
   box-shadow:
-    0 0 20px rgba(95,230,255,.75),
-    0 0 70px rgba(65,180,255,.35);
+    0 0 22px #55dfff,
+    0 0 65px rgba(42,150,255,.42);
 }
 
-.moon::after{
+.moon:after{
   content:"";
-
   position:absolute;
-
-  width:30px;
-  height:30px;
-
-  left:42px;
-  top:37px;
-
+  width:17%;
+  height:17%;
   border-radius:50%;
-
-  background:rgba(20,70,120,.22);
-
+  left:27%;
+  top:20%;
+  background:rgba(25,78,132,.22);
   box-shadow:
-    38px 32px 0 5px rgba(20,70,120,.13),
-    -8px 48px 0 2px rgba(20,70,120,.15);
+    35px 22px 0 7px rgba(25,78,132,.12),
+    -7px 36px 0 4px rgba(25,78,132,.14);
 }
 
-
-/* =========================
-   CITY
-========================= */
-
+/* CITY */
 .city{
   position:absolute;
   left:0;
   right:0;
   bottom:0;
-
-  height:48%;
-
-  opacity:.75;
+  height:44%;
+  opacity:.85;
 
   background:
+    linear-gradient(
+      165deg,
+      transparent 0 35%,
+      rgba(35,181,255,.10) 35.2%,
+      transparent 36%
+    ),
     repeating-linear-gradient(
       90deg,
-      #020711 0 26px,
-      #09162a 27px 48px,
-      #030914 49px 74px
+      rgba(4,10,22,.95) 0 7%,
+      rgba(13,25,48,.88) 7.1% 10%,
+      rgba(3,9,20,.96) 10.1% 16%,
+      rgba(17,28,48,.85) 16.1% 18%
     );
 
   clip-path:polygon(
     0 30%,
-    7% 20%,
-    13% 34%,
-    20% 12%,
-    28% 30%,
-    36% 17%,
-    44% 35%,
-    52% 11%,
-    60% 29%,
-    68% 16%,
-    76% 33%,
-    84% 10%,
-    92% 28%,
-    100% 17%,
+    6% 20%,
+    12% 33%,
+    19% 13%,
+    25% 28%,
+    31% 18%,
+    38% 35%,
+    44% 10%,
+    51% 28%,
+    57% 16%,
+    64% 34%,
+    71% 8%,
+    78% 27%,
+    84% 17%,
+    91% 31%,
+    97% 12%,
+    100% 21%,
     100% 100%,
     0 100%
   );
 }
 
-.city::after{
+.city:after{
   content:"";
-
   position:absolute;
   inset:30% 0 0;
 
   background:
     repeating-linear-gradient(
       90deg,
-      transparent 0 17px,
-      rgba(80,230,255,.15) 18px 20px,
-      transparent 21px 43px
+      transparent 0 4%,
+      rgba(78,225,255,.18) 4.2% 4.5%,
+      transparent 4.7% 8%
     ),
     repeating-linear-gradient(
       0deg,
-      transparent 0 23px,
-      rgba(80,230,255,.08) 24px 25px
+      transparent 0 15px,
+      rgba(78,225,255,.08) 16px 17px,
+      transparent 18px 29px
     );
 }
 
-
-/* =========================
-   TOP
-========================= */
-
-.header{
+/* TOP */
+.top{
   position:absolute;
-
-  left:6%;
-  right:6%;
-  top:5%;
-
-  z-index:5;
+  z-index:3;
+  left:5.5%;
+  right:5.5%;
+  top:4%;
 
   display:flex;
   justify-content:space-between;
+  align-items:flex-start;
 }
 
-.logo{
-  font-size:11px;
-  font-weight:800;
-
-  letter-spacing:5px;
-
-  color:#8cecff;
-
-  text-shadow:
-    0 0 12px rgba(75,230,255,.55);
+.brand{
+  font-size:10px;
+  letter-spacing:4px;
+  color:#8ceeff;
+  font-weight:700;
 }
 
-.system{
-  margin-top:7px;
-
+.sys{
   font-size:8px;
-
-  letter-spacing:3px;
-
-  color:#728aa5;
+  letter-spacing:2px;
+  color:#738da8;
+  margin-top:6px;
 }
 
 .area{
   text-align:right;
-
-  font-size:28px;
-
+  font-size:25px;
+  line-height:1;
   font-weight:900;
-
   letter-spacing:2px;
-
-  text-shadow:
-    0 0 18px rgba(90,220,255,.5);
+  text-shadow:0 0 18px rgba(71,220,255,.55);
 }
 
 .area small{
   display:block;
-
   margin-top:7px;
-
   font-size:8px;
-
-  letter-spacing:4px;
-
-  color:#8ca5bb;
-
+  letter-spacing:3px;
+  color:#8ea8bf;
   font-weight:500;
 }
 
-
-/* =========================
-   DIVIDER
-========================= */
-
 .divider{
   position:absolute;
-
-  top:15%;
-
-  left:6%;
-  right:6%;
-
+  top:14.5%;
+  left:5.5%;
+  right:5.5%;
   height:1px;
-
   background:
     linear-gradient(
       90deg,
-      #50e9ff,
-      rgba(80,230,255,.2) 65%,
+      #48e7ff,
+      rgba(72,231,255,.15) 62%,
       transparent
     );
-
-  box-shadow:
-    0 0 8px rgba(80,230,255,.35);
 }
 
-
-/* =========================
-   STAGE GRID
-========================= */
-
-.stage-grid{
-
+/* STAGE GRID */
+.grid{
   position:absolute;
-
+  z-index:3;
   left:5%;
   right:5%;
-
   top:19%;
-
-  bottom:15%;
-
-  z-index:5;
+  bottom:14%;
 
   display:grid;
-
-  grid-template-columns:
-    repeat(2,1fr);
-
-  grid-template-rows:
-    repeat(5,1fr);
-
-  gap:9px;
+  grid-template-columns:1fr 1fr;
+  grid-template-rows:repeat(5,1fr);
+  gap:8px;
 }
 
-
-/* =========================
-   STAGE CARD
-========================= */
-
-.stage{
-
+.card{
   position:relative;
 
-  overflow:hidden;
-
-  text-align:left;
-
-  padding:14px 13px;
+  border:1px solid rgba(74,222,255,.35);
 
   background:
     linear-gradient(
       135deg,
-      rgba(5,25,47,.92),
-      rgba(10,5,30,.84)
+      rgba(4,23,44,.88),
+      rgba(10,5,30,.76)
     );
 
-  border:
-    1px solid rgba(72,220,255,.38);
+  overflow:hidden;
+  text-align:left;
+  padding:12px;
 
-  clip-path:
-    polygon(
-      0 0,
-      93% 0,
-      100% 13%,
-      100% 100%,
-      7% 100%,
-      0 87%
-    );
+  clip-path:polygon(
+    0 0,
+    93% 0,
+    100% 13%,
+    100% 100%,
+    7% 100%,
+    0 87%
+  );
 
-  transition:
-    transform .1s,
-    filter .1s,
-    box-shadow .15s;
+  box-shadow:
+    inset 0 0 24px rgba(50,194,255,.035);
+
+  cursor:pointer;
 }
 
-.stage::before{
-
+.card:before{
   content:"";
-
   position:absolute;
-
   left:0;
   top:0;
-
-  width:40%;
+  width:38%;
   height:1px;
-
-  background:#59eaff;
-
-  box-shadow:
-    0 0 10px #59eaff;
+  background:#62eaff;
+  box-shadow:0 0 10px #62eaff;
 }
 
-.stage::after{
-
+.card:after{
   content:"";
-
   position:absolute;
-
-  right:-25px;
+  right:-28px;
   bottom:-30px;
-
-  width:85px;
-  height:85px;
-
+  width:80px;
+  height:80px;
   border-radius:50%;
-
-  border:
-    1px solid rgba(255,70,220,.16);
+  border:1px solid rgba(255,70,219,.15);
 }
 
-.stage:active{
-
-  transform:scale(.96);
-
-  filter:
-    brightness(1.5);
-
+.card:active{
+  transform:scale(.975);
+  filter:brightness(1.45);
 }
 
-
-/* =========================
-   SELECTED
-========================= */
-
-.stage.selected{
-
-  border-color:#ff55df;
+.card.selected{
+  border-color:#ff55dc;
 
   box-shadow:
-    inset 0 0 35px rgba(255,55,220,.12),
-    0 0 18px rgba(255,55,220,.15);
+    inset 0 0 30px rgba(255,55,220,.10),
+    0 0 18px rgba(255,55,220,.16);
 }
 
-.stage.selected::before{
-
-  background:#ff61df;
-
-  box-shadow:
-    0 0 13px #ff61df;
+.card.selected:before{
+  background:#ff62df;
+  box-shadow:0 0 12px #ff62df;
 }
 
-
-/* =========================
-   TEXT
-========================= */
-
-.stage-number{
-
+.num{
   font-size:8px;
-
-  letter-spacing:2.5px;
-
+  letter-spacing:2.2px;
   color:#70ddff;
 }
 
-.stage-name{
-
+.name{
   position:absolute;
-
-  left:13px;
-  bottom:23px;
+  left:12px;
+  bottom:20px;
 
   font-size:9px;
-
-  letter-spacing:1.8px;
+  letter-spacing:1.6px;
+  color:#d9f8ff;
 
   white-space:nowrap;
-
-  color:#ddf9ff;
-}
-
-.rank{
-
-  position:absolute;
-
-  right:11px;
-  top:6px;
-
-  font-size:27px;
-
-  font-weight:900;
-
-  font-style:italic;
-
-  color:#f4fcff;
-
-  text-shadow:
-    0 0 15px rgba(80,225,255,.65);
-}
-
-.stage.selected .rank{
-
-  color:#ff91eb;
-
-  text-shadow:
-    0 0 17px rgba(255,75,220,.9);
 }
 
 .score{
-
   position:absolute;
-
   right:11px;
-  bottom:8px;
+  bottom:9px;
 
   font-size:7px;
-
   letter-spacing:1px;
-
-  color:#70879e;
+  color:#6e879d;
 }
 
-.line{
-
+.rank{
   position:absolute;
+  right:10px;
+  top:6px;
 
-  left:13px;
-  right:13px;
+  font-size:25px;
+  font-weight:900;
+  font-style:italic;
 
-  bottom:7px;
+  color:#f0fbff;
 
-  height:1px;
-
-  background:rgba(130,170,190,.15);
+  text-shadow:
+    0 0 13px rgba(76,223,255,.65);
 }
 
-.line span{
+.card.selected .rank{
+  color:#ff8be8;
+  text-shadow:
+    0 0 15px rgba(255,72,219,.8);
+}
 
+.progress{
+  position:absolute;
+  left:12px;
+  right:12px;
+  bottom:7px;
+  height:1px;
+  background:rgba(130,160,180,.15);
+}
+
+.progress i{
   display:block;
-
   height:100%;
 
   background:
     linear-gradient(
       90deg,
       #53e9ff,
-      #d3fbff
+      #b9f8ff
     );
 
-  box-shadow:
-    0 0 8px #53e9ff;
+  box-shadow:0 0 7px #53e9ff;
 }
 
-
-/* =========================
-   BOTTOM
-========================= */
-
+/* BOTTOM */
 .bottom{
-
   position:absolute;
-
+  z-index:4;
   left:5%;
   right:5%;
-
   bottom:3%;
-
-  z-index:6;
+  height:7%;
 
   display:flex;
-
   align-items:center;
-
   justify-content:space-between;
 }
 
-.area-button{
+.nav{
+  background:rgba(3,15,29,.86);
+  border:1px solid rgba(80,224,255,.4);
 
-  padding:10px 14px;
-
-  background:
-    rgba(3,15,29,.88);
-
-  border:
-    1px solid rgba(80,225,255,.42);
+  padding:9px 13px;
 
   font-size:8px;
-
   letter-spacing:2px;
 
-  color:#d7f8ff;
+  cursor:pointer;
 }
 
-.area-button:active{
-
-  transform:scale(.94);
-
-  filter:brightness(1.5);
-}
-
-.page{
-
+.pages{
   font-size:8px;
-
-  letter-spacing:4px;
-
-  color:#7189a1;
+  letter-spacing:3px;
+  color:#738da6;
 }
 
-
-/* =========================
-   DETAIL
-========================= */
-
+/* DETAIL */
 .detail{
-
-  position:absolute;
-
-  inset:0;
-
-  z-index:20;
-
   display:none;
 
+  position:absolute;
+  z-index:20;
+  inset:0;
+
+  background:rgba(1,5,14,.70);
+
+  backdrop-filter:blur(10px);
+  -webkit-backdrop-filter:blur(10px);
+
   align-items:flex-end;
-
-  background:
-    rgba(1,5,14,.72);
-
-  backdrop-filter:blur(11px);
-
-  -webkit-backdrop-filter:blur(11px);
 }
 
-.detail.show{
-  display:flex;
-}
-
-.detail-panel{
-
+.panel{
+  position:relative;
   width:100%;
 
-  padding:
-    38px 8% 9%;
-
-  border-top:
-    1px solid #55e8ff;
+  padding:32px 7% 8%;
 
   background:
     linear-gradient(
       180deg,
-      transparent 0%,
-      rgba(3,7,17,.97) 18%
+      transparent,
+      #030711 20%
     );
 
-  box-shadow:
-    0 -10px 50px rgba(30,180,255,.08);
+  border-top:1px solid #55e8ff;
 }
 
 .close{
-
   position:absolute;
-
   right:6%;
-  top:12px;
+  top:10px;
 
-  padding:10px;
+  border:0;
+  background:transparent;
 
-  background:none;
+  padding:12px;
+
+  color:#8ca4ba;
 
   font-size:9px;
-
   letter-spacing:2px;
-
-  color:#8ba3b8;
 }
 
 .kicker{
-
   font-size:8px;
-
   letter-spacing:3px;
-
-  color:#63eaff;
+  color:#62eaff;
 }
 
-.detail-title{
-
-  margin:5px 0 3px;
+.panel h1{
+  margin:5px 0 2px;
 
   font-size:40px;
-
-  font-style:italic;
-
   letter-spacing:3px;
-
-  text-shadow:
-    0 0 20px rgba(70,220,255,.3);
+  font-style:italic;
 }
 
-.detail-name{
-
-  margin:0 0 22px;
+.panel p{
+  margin:0 0 20px;
 
   font-size:9px;
-
-  letter-spacing:3px;
-
-  color:#8199b0;
+  letter-spacing:2px;
+  color:#7e96ad;
 }
 
 .stats{
-
   display:flex;
-
-  gap:30px;
-
-  margin-bottom:24px;
+  gap:25px;
+  margin-bottom:22px;
 }
 
-.stat-label{
+.stats span{
+  display:block;
 
   font-size:7px;
-
   letter-spacing:1.5px;
-
-  color:#718aa1;
+  color:#728ba3;
 }
 
-.stat-value{
-
+.stats b{
+  display:block;
   margin-top:4px;
 
   font-size:20px;
-
-  font-weight:800;
 }
 
 .start{
-
   width:100%;
 
-  padding:16px;
+  padding:15px;
 
-  border:
-    1px solid #ff58df;
+  border:1px solid #ff58df;
 
   background:
     linear-gradient(
       90deg,
-      rgba(255,52,218,.22),
-      rgba(53,216,255,.13)
+      rgba(255,52,218,.20),
+      rgba(53,216,255,.12)
     );
 
   font-size:10px;
-
-  font-weight:900;
-
+  font-weight:800;
   letter-spacing:4px;
 
-  text-shadow:
-    0 0 10px rgba(255,100,230,.4);
+  cursor:pointer;
 }
 
-.start:active{
-
-  transform:scale(.98);
-
-  filter:brightness(1.35);
-}
-
-
-/* =========================
-   TOAST
-========================= */
-
+/* TOAST */
 .toast{
-
   position:absolute;
-
-  left:50%;
-  bottom:16%;
-
   z-index:30;
 
-  transform:
-    translateX(-50%);
+  left:50%;
+  bottom:15%;
 
-  padding:10px 16px;
+  transform:translateX(-50%);
 
-  border:
-    1px solid rgba(80,225,255,.45);
+  padding:9px 15px;
 
-  background:
-    rgba(2,12,24,.95);
+  border:1px solid rgba(90,225,255,.45);
+
+  background:rgba(2,12,24,.94);
 
   font-size:8px;
-
   letter-spacing:2px;
 
-  white-space:nowrap;
-
   opacity:0;
+  transition:.18s;
 
-  pointer-events:none;
-
-  transition:opacity .15s;
+  white-space:nowrap;
 }
 
 .toast.show{
   opacity:1;
 }
 
+@media(min-width:700px){
+  #app{
+    height:100vh;
+  }
+}
 </style>
 </head>
-
 
 <body>
 
 <div id="app">
 
-  <div class="grid-bg"></div>
-
+  <div class="bg"></div>
   <div class="moon"></div>
-
   <div class="city"></div>
+  <div class="scan"></div>
 
-
-  <!-- HEADER -->
-
-  <header class="header">
+  <header class="top">
 
     <div>
-
-      <div class="logo">
-        JUST EVADE
-      </div>
-
-      <div class="system">
-        STAGE SELECT SYSTEM
-      </div>
-
+      <div class="brand">JUST EVADE</div>
+      <div class="sys">STAGE SELECT SYSTEM</div>
     </div>
 
     <div class="area">
       AREA 01
-
-      <small>
-        NEON CITY
-      </small>
-
+      <small>NEON CITY</small>
     </div>
 
   </header>
 
-
   <div class="divider"></div>
 
-
-  <!-- STAGES -->
-
-  <main
-    class="stage-grid"
-    id="stageGrid">
-  </main>
-
-
-  <!-- BOTTOM -->
+  <main class="grid" id="grid"></main>
 
   <footer class="bottom">
 
-    <button
-      class="area-button"
-      id="prevArea">
+    <button class="nav" id="prev">
       ◀ AREA
     </button>
 
-    <div class="page">
+    <div class="pages">
       01 — 10
     </div>
 
-    <button
-      class="area-button"
-      id="nextArea">
+    <button class="nav" id="next">
       AREA ▶
     </button>
 
   </footer>
 
+  <section class="detail" id="detail">
 
-  <!-- DETAIL -->
-
-  <section
-    class="detail"
-    id="detail">
-
-    <button
-      class="close"
-      id="close">
+    <button class="close" id="close">
       CLOSE ×
     </button>
 
-    <div class="detail-panel">
+    <div class="panel">
 
       <div class="kicker">
         SELECTED STAGE
       </div>
 
-      <div
-        class="detail-title"
-        id="detailTitle">
+      <h1 id="dtitle">
         STAGE 01
-      </div>
+      </h1>
 
-      <div
-        class="detail-name"
-        id="detailName">
+      <p id="dname">
         NEON RUN
-      </div>
-
+      </p>
 
       <div class="stats">
 
         <div>
-
-          <div class="stat-label">
-            BEST SCORE
-          </div>
-
-          <div
-            class="stat-value"
-            id="detailScore">
-            184520
-          </div>
-
+          <span>BEST SCORE</span>
+          <b id="dscore">184520</b>
         </div>
 
-
         <div>
-
-          <div class="stat-label">
-            RANK
-          </div>
-
-          <div
-            class="stat-value"
-            id="detailRank">
-            S
-          </div>
-
+          <span>RANK</span>
+          <b id="drank">S</b>
         </div>
 
-
         <div>
-
-          <div class="stat-label">
-            COMBO
-          </div>
-
-          <div
-            class="stat-value"
-            id="detailCombo">
-            84
-          </div>
-
+          <span>COMBO</span>
+          <b id="dcombo">84</b>
         </div>
 
       </div>
 
-
-      <button
-        class="start"
-        id="startStage">
+      <button class="start" id="start">
         START STAGE
       </button>
 
@@ -981,292 +691,173 @@ button{
 
   </section>
 
-
-  <div
-    class="toast"
-    id="toast">
+  <div class="toast" id="toast">
+    AREA 02 — COMING SOON
   </div>
 
 </div>
 
-
 <script>
 
-const stages = [
-
-  {
-    name:"NEON RUN",
-    rank:"S",
-    score:"184520"
-  },
-
-  {
-    name:"BLUE MOON",
-    rank:"A",
-    score:"160340"
-  },
-
-  {
-    name:"NIGHT GRID",
-    rank:"A",
-    score:"148220"
-  },
-
-  {
-    name:"CYBER VEIL",
-    rank:"B",
-    score:"129870"
-  },
-
-  {
-    name:"SKY LINE",
-    rank:"S",
-    score:"176400"
-  },
-
-  {
-    name:"RAPID EDGE",
-    rank:"A",
-    score:"151220"
-  },
-
-  {
-    name:"DARK FLOW",
-    rank:"B",
-    score:"112640"
-  },
-
-  {
-    name:"ZERO POINT",
-    rank:"A",
-    score:"145900"
-  },
-
-  {
-    name:"MOON RISE",
-    rank:"S",
-    score:"190120"
-  },
-
-  {
-    name:"LAST GATE",
-    rank:"—",
-    score:"000000"
-  }
-
+const names = [
+  "NEON RUN",
+  "BLUE MOON",
+  "NIGHT GRID",
+  "CYBER VEIL",
+  "SKY LINE",
+  "RAPID EDGE",
+  "DARK FLOW",
+  "ZERO POINT",
+  "MOON RISE",
+  "LAST GATE"
 ];
 
+const ranks = [
+  "S",
+  "A",
+  "A",
+  "B",
+  "S",
+  "A",
+  "B",
+  "A",
+  "S",
+  "—"
+];
 
-const grid =
-  document.getElementById("stageGrid");
+const scores = [
+  "184520",
+  "160340",
+  "148220",
+  "129870",
+  "176400",
+  "151220",
+  "112640",
+  "145900",
+  "190120",
+  "000000"
+];
 
+const grid = document.getElementById("grid");
 
-/* =========================
-   CREATE STAGES
-========================= */
+names.forEach((name, i) => {
 
-stages.forEach((stage,index)=>{
+  const b = document.createElement("button");
 
-  const button =
-    document.createElement("button");
+  b.className =
+    "card" +
+    (i === 0 ? " selected" : "");
 
-  button.className =
-    "stage" +
-    (index === 0 ? " selected" : "");
+  b.type = "button";
 
-  button.type = "button";
+  b.innerHTML = `
 
-
-  const progress =
-    stage.rank === "—"
-      ? 0
-      : 55 + index * 4;
-
-
-  button.innerHTML = `
-
-    <div class="stage-number">
-      STAGE ${String(index+1).padStart(2,"0")}
+    <div class="num">
+      STAGE ${String(i + 1).padStart(2,"0")}
     </div>
 
     <div class="rank">
-      ${stage.rank}
+      ${ranks[i]}
     </div>
 
-    <div class="stage-name">
-      ${stage.name}
+    <div class="name">
+      ${name}
     </div>
 
     <div class="score">
-      ${stage.score}
+      ${scores[i]}
     </div>
 
-    <div class="line">
-      <span style="width:${progress}%"></span>
+    <div class="progress">
+      <i style="width:${
+        ranks[i] === "—"
+          ? 0
+          : (55 + i * 4)
+      }%"></i>
     </div>
 
   `;
 
+  b.onclick = () => openStage(i);
 
-  button.addEventListener(
-    "click",
-    ()=>selectStage(index)
-  );
-
-
-  grid.appendChild(button);
+  grid.appendChild(b);
 
 });
 
 
-/* =========================
-   STAGE SELECT
-========================= */
+function openStage(i){
 
-function selectStage(index){
+  document.getElementById("dtitle")
+    .textContent =
+    `STAGE ${String(i + 1).padStart(2,"0")}`;
 
-  document
-    .querySelectorAll(".stage")
-    .forEach(el=>{
-      el.classList.remove("selected");
-    });
+  document.getElementById("dname")
+    .textContent =
+    names[i];
 
+  document.getElementById("dscore")
+    .textContent =
+    scores[i];
 
-  document
-    .querySelectorAll(".stage")[index]
-    .classList.add("selected");
+  document.getElementById("drank")
+    .textContent =
+    ranks[i];
 
-
-  const stage =
-    stages[index];
-
-
-  document.getElementById(
-    "detailTitle"
-  ).textContent =
-    `STAGE ${String(index+1).padStart(2,"0")}`;
-
-
-  document.getElementById(
-    "detailName"
-  ).textContent =
-    stage.name;
-
-
-  document.getElementById(
-    "detailScore"
-  ).textContent =
-    stage.score;
-
-
-  document.getElementById(
-    "detailRank"
-  ).textContent =
-    stage.rank;
-
-
-  document.getElementById(
-    "detailCombo"
-  ).textContent =
-    stage.rank === "—"
+  document.getElementById("dcombo")
+    .textContent =
+    ranks[i] === "—"
       ? "—"
-      : 42 + index * 7;
+      : String(42 + i * 7);
 
-
-  document
-    .getElementById("detail")
-    .classList.add("show");
+  document.getElementById("detail")
+    .style.display = "flex";
 
 }
 
 
-/* =========================
-   CLOSE
-========================= */
+document.getElementById("close").onclick = () => {
 
-document
-  .getElementById("close")
-  .addEventListener(
-    "click",
-    ()=>{
-      document
-        .getElementById("detail")
-        .classList.remove("show");
-    }
-  );
+  document.getElementById("detail")
+    .style.display = "none";
+
+};
 
 
-/* =========================
-   START
-========================= */
+document.getElementById("start").onclick = () => {
 
-document
-  .getElementById("startStage")
-  .addEventListener(
-    "click",
-    ()=>{
+  showToast("STAGE START — DEMO");
 
-      showToast(
-        "STAGE START — DEMO"
-      );
-
-    }
-  );
+};
 
 
-/* =========================
-   AREA
-========================= */
+document.getElementById("prev").onclick = () => {
 
-document
-  .getElementById("prevArea")
-  .addEventListener(
-    "click",
-    ()=>{
+  showToast("AREA 10 ←");
 
-      showToast(
-        "AREA 10 ←"
-      );
-
-    }
-  );
+};
 
 
-document
-  .getElementById("nextArea")
-  .addEventListener(
-    "click",
-    ()=>{
+document.getElementById("next").onclick = () => {
 
-      showToast(
-        "AREA 02 — COMING SOON"
-      );
+  showToast("AREA 02 — COMING SOON");
 
-    }
-  );
+};
 
-
-/* =========================
-   TOAST
-========================= */
 
 function showToast(text){
 
   const toast =
     document.getElementById("toast");
 
-  toast.textContent =
-    text;
+  toast.textContent = text;
 
   toast.classList.add("show");
 
+  setTimeout(() => {
 
-  setTimeout(
-    ()=>{
-      toast.classList.remove("show");
-    },
-    1300
-  );
+    toast.classList.remove("show");
+
+  }, 1200);
 
 }
 
