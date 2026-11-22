@@ -1,1 +1,61 @@
-
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
+<title>JUST EVADE — Stage Select</title>
+<style>
+*{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;background:#050914;color:#e9fbff;font-family:-apple-system,BlinkMacSystemFont,"Helvetica Neue",Arial,sans-serif}
+body{overflow:hidden;touch-action:manipulation}
+button{font:inherit;-webkit-tap-highlight-color:transparent}
+#app{position:relative;width:100vw;height:100dvh;max-width:540px;margin:auto;overflow:hidden;background:
+radial-gradient(circle at 72% 15%,rgba(55,185,255,.28),transparent 28%),
+linear-gradient(155deg,#071528 0%,#030711 58%,#09031b 100%)}
+#city{position:absolute;inset:0;opacity:.8;background:
+linear-gradient(150deg,transparent 0 56%,rgba(40,145,210,.18) 56.2%,transparent 57%),
+linear-gradient(25deg,transparent 0 70%,rgba(255,55,210,.08) 70.2%,transparent 71%),
+repeating-linear-gradient(90deg,transparent 0 8%,rgba(65,205,255,.08) 8.1%,transparent 8.6%)}
+#moon{position:absolute;right:7%;top:7%;width:min(30vw,160px);aspect-ratio:1;border-radius:50%;
+background:radial-gradient(circle at 35% 32%,#d6f7ff 0,#72d2ff 34%,#2d75db 67%,#18326e 100%);
+box-shadow:0 0 28px rgba(65,205,255,.95),0 0 90px rgba(35,145,255,.5)}
+#top{position:absolute;z-index:2;left:6%;right:6%;top:4%;display:flex;justify-content:space-between;align-items:flex-end}
+.brand{font-size:11px;letter-spacing:4px;color:#83efff}.sub{font-size:9px;letter-spacing:2.5px;color:#8498ae;margin-top:5px}.area{font-size:29px;font-weight:800;letter-spacing:2px;text-shadow:0 0 16px rgba(67,220,255,.9)}
+#list{position:absolute;z-index:2;left:5%;right:5%;top:21%;bottom:14%;display:grid;grid-template-columns:1fr 1fr;gap:9px}
+.stage{position:relative;min-width:0;min-height:0;border:1px solid rgba(84,222,255,.42);background:linear-gradient(135deg,rgba(7,25,48,.94),rgba(16,6,40,.78));color:#e9fbff;text-align:left;padding:12px;clip-path:polygon(0 0,92% 0,100% 16%,100% 100%,8% 100%,0 84%);overflow:hidden}
+.stage.selected{border-color:#ff55db;box-shadow:inset 0 0 24px rgba(255,55,216,.08),0 0 18px rgba(255,55,216,.22)}
+.stage:active{filter:brightness(1.5);transform:scale(.985)}
+.num{font-size:9px;letter-spacing:2.5px;color:#78eaff}.name{margin-top:14px;font-size:10px;letter-spacing:1.8px}.rank{position:absolute;right:11px;top:7px;font-size:26px;font-weight:900;text-shadow:0 0 14px rgba(255,75,220,.8)}.score{position:absolute;right:11px;bottom:9px;font-size:8px;letter-spacing:1px;color:#8b9db0}.line{position:absolute;left:12px;right:12px;bottom:8px;height:1px;background:linear-gradient(90deg,#59efff 0 68%,rgba(255,255,255,.08) 68%)}
+#bottom{position:absolute;z-index:3;left:5%;right:5%;bottom:3%;display:flex;align-items:center;justify-content:space-between}
+.nav{border:1px solid rgba(88,229,255,.48);background:rgba(3,18,34,.85);color:#bcefff;padding:10px 14px;font-size:9px;letter-spacing:2px}
+#detail{display:none;position:absolute;z-index:10;inset:0;background:rgba(1,5,14,.72);backdrop-filter:blur(9px);-webkit-backdrop-filter:blur(9px);align-items:flex-end}
+.panel{width:100%;padding:28px 7% 9%;background:linear-gradient(180deg,rgba(5,16,31,.12),#050914 25%);border-top:1px solid #59eaff}
+.close{position:absolute;right:7%;top:7%;border:0;background:transparent;color:#9fb3c7;font-size:10px;letter-spacing:2px;padding:12px}
+.panel h1{margin:2px 0 5px;font-size:37px;letter-spacing:3px}.panel p{margin:0 0 22px;color:#8196aa;font-size:9px;letter-spacing:2px}.stats{display:flex;gap:28px;margin-bottom:22px}.stats span{display:block;font-size:8px;letter-spacing:1px;color:#748a9f}.stats b{display:block;margin-top:4px;font-size:20px}.start{width:100%;padding:15px;border:1px solid #ff55dc;background:linear-gradient(90deg,rgba(255,55,215,.2),rgba(63,210,255,.14));color:#fff;letter-spacing:4px;font-weight:700}
+</style>
+</head>
+<body>
+<div id="app">
+<div id="city"></div><div id="moon"></div>
+<header id="top"><div><div class="brand">JUST EVADE</div><div class="sub">STAGE SELECT SYSTEM</div></div><div style="text-align:right"><div class="area">AREA 01</div><div class="sub">NEON CITY</div></div></header>
+<main id="list"></main>
+<nav id="bottom"><button class="nav" id="prev">◀ AREA</button><div class="sub">01 — 10</div><button class="nav" id="next">AREA ▶</button></nav>
+<section id="detail"><button class="close" id="close">CLOSE ×</button><div class="panel"><div class="sub">SELECTED STAGE</div><h1 id="title">STAGE 01</h1><p id="name">NEON RUN</p><div class="stats"><div><span>BEST SCORE</span><b id="score">000000</b></div><div><span>RANK</span><b id="rank">S</b></div><div><span>COMBO</span><b id="combo">0</b></div></div><button class="start" id="start">START STAGE</button></div></section>
+</div>
+<script>
+(function(){
+var names=["NEON RUN","BLUE MOON","NIGHT GRID","CYBER VEIL","SKY LINE","RAPID EDGE","DARK FLOW","ZERO POINT","MOON RISE","LAST GATE"];
+var ranks=["S","A","A","B","S","A","B","A","S","—"];
+var scores=["184520","160340","148220","129870","176400","151220","112640","145900","190120","000000"];
+var list=document.getElementById("list"), detail=document.getElementById("detail");
+for(var i=0;i<10;i++){
+ var b=document.createElement("button"); b.type="button"; b.className="stage"+(i===0?" selected":"");
+ b.innerHTML='<div class="num">STAGE '+String(i+1).padStart(2,"0")+'</div><div class="rank">'+ranks[i]+'</div><div class="name">'+names[i]+'</div><div class="score">'+scores[i]+'</div><div class="line"></div>';
+ b.addEventListener("click",function(){open(Number(this.dataset.i))}); b.dataset.i=i; list.appendChild(b);
+}
+function open(i){document.getElementById("title").textContent="STAGE "+String(i+1).padStart(2,"0");document.getElementById("name").textContent=names[i];document.getElementById("score").textContent=scores[i];document.getElementById("rank").textContent=ranks[i];document.getElementById("combo").textContent=i===9?"—":String(12+i*7);detail.style.display="flex"}
+document.getElementById("close").onclick=function(){detail.style.display="none"};
+document.getElementById("start").onclick=function(){document.getElementById("name").textContent="STAGE STARTED";};
+})();
+</script>
+</body>
+</html>
